@@ -7,7 +7,7 @@ volumes:
 services:
   db:
     image: mysql/mysql-server:8.0
-    container_name: nest-dev-db
+    container_name: nest2-insta-story
     restart: always
     command:
       - --default-authentication-plugin=mysql_native_password
@@ -17,7 +17,7 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: user
       MYSQL_PASSWORD: password
-      MYSQL_DATABASE: nest_db
+      MYSQL_DATABASE: nest2_insta_story
     ports:
       - '3306:3306'
     volumes:

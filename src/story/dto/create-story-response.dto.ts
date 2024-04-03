@@ -1,4 +1,3 @@
-import { Url } from 'url';
 import { Story } from '../entities/story.entity';
 
 export class CreateStoryResponseDto {
@@ -7,7 +6,7 @@ export class CreateStoryResponseDto {
   validTime: number;
   title: string;
   author: string;
-  image: Url;
+  image: string;
   hastags: string[];
 
   public static fromEntity(entity: Story): CreateStoryResponseDto {

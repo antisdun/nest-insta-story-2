@@ -24,11 +24,23 @@ export class StoryService {
     return CreateStoryResponseDto.fromEntity(entity);
   }
 
-  async getStroy(dto: PaginationDto): Promise<PaginationResult<Story>> {
-    const [result, total] = await this.storyRepository.findAndCount({
-      skip: (dto.page - 1) * dto.limit,
-      take: dto.limit,
-    });
-    return createPaginationResult(result, dto.page, dto.limit, total);
+  async getStroy(
+    dto: PaginationDto,
+  ): Promise<PaginationResult<CreateStoryResponseDto>> {
+    const [result, total] = await this.storyRepository
+      .createQueryBuilder('story')
+      .leftJoinAndSelect('story.hashtags', 'hashtag')
+      .where(
+        'story.createdAt > DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL story.validTime HOUR)',
+      )
+      .skip(Number((dto.page - 1) * dto.limit))
+      .take(Number(dto.limit))
+      .getManyAndCount();
+
+    const data = result.map((story) =>
+      CreateStoryResponseDto.fromEntity(story),
+    );
+
+    return createPaginationResult(data, dto.page, total, dto.limit);
   }
 }

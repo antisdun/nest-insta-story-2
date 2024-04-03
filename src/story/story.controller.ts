@@ -4,7 +4,7 @@ import { CreateStoryRequestDto } from './dto/create-story-request.dto';
 import { PaginationDto } from 'src/page/pagination.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('스토리 Api')
+@ApiTags('Story')
 @Controller('story')
 export class StoryController {
   constructor(private readonly storyService: StoryService) {}

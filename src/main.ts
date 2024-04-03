@@ -8,8 +8,6 @@ async function bootstrap() {
   initializeTransactionalContext();
 
   const app = await NestFactory.create(AppModule);
-  // TODO: 프로그램 구현
-  await app.listen(process.env.PORT || 8000);
 
   // 파이프라인 설정
   app.useGlobalPipes(
@@ -33,6 +31,9 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config, swaggerOptions);
   SwaggerModule.setup('api', app, document);
+
+  // TODO: 프로그램 구현
+  await app.listen(process.env.PORT || 8000);
 
   console.log(`Application is running on: ${await app.getUrl()}`);
 }

@@ -1,5 +1,3 @@
-import { Url } from 'url';
-
 export class CreateStoryRequestDto {
   title: string;
 
@@ -7,7 +5,7 @@ export class CreateStoryRequestDto {
 
   validTime: number;
 
-  image: Url;
+  image: string;
 
   hashtags: string[];
 }

@@ -1,5 +1,4 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Url } from 'url';
 
 @Entity()
 export class Story {
@@ -19,7 +18,7 @@ export class Story {
   author: string;
 
   @Column()
-  image: Url;
+  image: string;
 
   @Column()
   hashtags: string[];

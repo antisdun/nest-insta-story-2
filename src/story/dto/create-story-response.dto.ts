@@ -1,3 +1,4 @@
+import { Hashtag } from './../entities/hashtag.entity';
 import { Story } from '../entities/story.entity';
 
 export class CreateStoryResponseDto {
@@ -7,7 +8,7 @@ export class CreateStoryResponseDto {
   title: string;
   author: string;
   image: string;
-  hastags: string[];
+  hastags: Hashtag[];
 
   public static fromEntity(entity: Story): CreateStoryResponseDto {
     const dto = new CreateStoryResponseDto();

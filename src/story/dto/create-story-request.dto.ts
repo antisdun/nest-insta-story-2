@@ -1,3 +1,4 @@
+import { Hashtag } from './../entities/hashtag.entity';
 export class CreateStoryRequestDto {
   title: string;
 
@@ -7,5 +8,5 @@ export class CreateStoryRequestDto {
 
   image: string;
 
-  hashtags: string[];
+  hashtags: Hashtag[];
 }

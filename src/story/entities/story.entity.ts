@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Hashtag } from './hashtag.entity';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
 
 @Entity()
 export class Story {
@@ -20,6 +27,7 @@ export class Story {
   @Column()
   image: string;
 
-  @Column()
-  hashtags: string[];
+  @ManyToMany(() => Hashtag)
+  @JoinTable()
+  hashtags: Hashtag[];
 }
